@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional Software Engineering Portfolio of Chetanya Gulia — S&AI Open-Source Contributor, Quantitative Developer, and B.Tech CS & AI Student.">
+  <meta name="author" content="Chetanya Gulia">
+  <title>Chetanya Gulia — Software Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #101522;
+      --bg-card: rgba(18, 24, 38, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 13, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand span {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    .hero {
+      margin-bottom: 4rem;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .badge.green {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-emerald);
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      max-width: 850px;
+    }
+
+    section {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header span.marks {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-purple);
+      background: rgba(168, 85, 247, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid rgba(168, 85, 247, 0.25);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Skills styling */
+    .skill-category h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .skill-list li strong {
+      color: var(--text-main);
+    }
+
+    .skill-link {
+      display: inline-block;
+      margin-top: 0.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    /* Table styling for PRs */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .pr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 9999px;
+      white-space: nowrap;
+      margin-top: 0.35rem;
+    }
+
+    /* Projects styling */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    .project-field {
+      margin-bottom: 0.9rem;
+    }
+
+    .project-field strong {
+      color: var(--text-main);
+      display: block;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      font-family: var(--font-heading);
+    }
+
+    /* Education & Achievements */
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 10px var(--accent-blue);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-blue);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Contact Links */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      font-size: 1.25rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      th, td { padding: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <span>Chetanya Gulia</span> · Portfolio
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contributions">S&AI Contributions</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <div class="hero">
+      <div class="badge-row">
+        <span class="badge green">● URN: E26B07F0651</span>
+        <span class="badge">● S-AI-Projects Verified</span>
+        <span class="badge">● Class of 2028</span>
+      </div>
+      <h1>Chetanya Gulia</h1>
+      <p class="lead">Software Engineering & Quantitative Systems Developer pursuing B.Tech in CS & AI at Newton School of Technology (in partnership with ADYPU, Pune). Contributing maintainer to the official S&AI open-source repositories.</p>
+    </div>
+
+    <!-- SECTION 1: ABOUT ME -->
+    <section id="about">
+      <div class="section-header">
+        <h2>1. About Me</h2>
+        <span class="marks">Weight: 1.0 Mark</span>
+      </div>
+      <div class="card">
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+          I am a second-year undergraduate student pursuing a Bachelor of Technology (B.Tech) in Computer Science &amp; Artificial Intelligence at Newton School of Technology (in partnership with Ajeenkya DY Patil University, Pune). My core technical competencies focus on quantitative systems engineering, high-performance systems development in C++ and Python, domain-specific filter engines (jq), and agentic LLM pipeline architectures. I am actively seeking Quantitative Developer and Systems Software Engineering internships where I can apply rigorous mathematical modeling, deterministic financial computation, and scalable open-source infrastructure engineering.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2>2. Technical Skills</h2>
+        <span class="marks">Weight: 1.5 Marks</span>
+      </div>
+      <div class="grid-2">
+        
+        <!-- Category 1 -->
+        <div class="card skill-category">
+          <h3>Languages & Query Systems</h3>
+          <ul class="skill-list">
+            <li>
+              <strong>jq (Domain-Specific Language)</strong>: Stream filtering, recursive generators, and Cartesian calculations.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/64" target="_blank">↳ Code Proof: PR #64 (Two-Bucket)</a> · 
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/63" target="_blank">PR #63 (Atbash)</a>
+            </li>
+            <li>
+              <strong>Python 3</strong>: Test harnesses, TAP assertion suites, AST mutation validation, and sandboxing.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/62" target="_blank">↳ Code Proof: PR #62 (check.py)</a> · 
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/71" target="_blank">PR #71 (Runner)</a>
+            </li>
+            <li>
+              <strong>TypeScript</strong>: Strict type systems, state management, and real-time financial models.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot/blob/main/src/App.tsx" target="_blank">↳ Code Proof: QuantPilot App.tsx</a>
+            </li>
+            <li>
+              <strong>JavaScript (ES2024)</strong>: Client-side vector tokenization, Web Workers, and Canvas API.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/tokenizer-playground/blob/main/index.html" target="_blank">↳ Code Proof: Tokenizer Playground</a>
+            </li>
+            <li>
+              <strong>POSIX Shell / Bash</strong>: Repository automation, exercise validators, and pipeline scripts.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/62" target="_blank">↳ Code Proof: validate_one_exercise Runner</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="card skill-category">
+          <h3>Frameworks & Frontend Technologies</h3>
+          <ul class="skill-list">
+            <li>
+              <strong>React 19 &amp; Vite</strong>: Virtual DOM architecture, modular hooks, and zero-latency HMR packaging.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot/blob/main/src/components/layout/AppLayout.tsx" target="_blank">↳ Code Proof: QuantPilot AppLayout.tsx</a>
+            </li>
+            <li>
+              <strong>Tailwind CSS v4</strong>: Utility design systems, responsive layouts, and CSS variable themes.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot/blob/main/src/index.css" target="_blank">↳ Code Proof: QuantPilot index.css</a>
+            </li>
+            <li>
+              <strong>Recharts Visualization</strong>: Multi-pane candlestick charts, volume histograms, and technical indicators.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot/blob/main/src/components/chart/CandlestickChart.tsx" target="_blank">↳ Code Proof: QuantPilot CandlestickChart.tsx</a>
+            </li>
+            <li>
+              <strong>Google Gemini API</strong>: Structured prompt pipelines, trade journal synthesis, and risk assessment.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot/blob/main/src/pages/AIAssistant.tsx" target="_blank">↳ Code Proof: QuantPilot AIAssistant.tsx</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="card skill-category">
+          <h3>Databases & Cloud Architecture</h3>
+          <ul class="skill-list">
+            <li>
+              <strong>Supabase &amp; PostgreSQL</strong>: Relational schema design, database migrations, and Row-Level Security (RLS).<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot#readme" target="_blank">↳ Architecture Proof: QuantPilot RLS Schema</a>
+            </li>
+            <li>
+              <strong>GitHub Pages &amp; CDN</strong>: Zero-config static asset deployment, edge caching, and DNS mapping.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/chetanyagulia05-ops.github.io" target="_blank">↳ Deployment Proof: chetanyagulia05-ops.github.io</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="card skill-category">
+          <h3>Developer Tools & Quality Engineering</h3>
+          <ul class="skill-list">
+            <li>
+              <strong>Git &amp; GitHub CLI (gh)</strong>: Multi-remote fork synchronization, branch isolation, and automated PR lifecycles.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pulls?q=is%3Apr+author%3Achetanyagulia05-ops" target="_blank">↳ Workflow Proof: 10 Course Pull Requests</a>
+            </li>
+            <li>
+              <strong>TAP &amp; Unittest Automation</strong>: Test assertion pipelines, mock isolation, and regression verification.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/71" target="_blank">↳ Test Proof: PR #71 Isolated Runner</a>
+            </li>
+            <li>
+              <strong>TOML &amp; JSON Specification</strong>: Canonical test case schemas, metadata validation, and Exercism track configs.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pull/62" target="_blank">↳ Schema Proof: PR #62 tests.toml</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: S&AI OPEN-SOURCE CONTRIBUTIONS -->
+    <section id="contributions">
+      <div class="section-header">
+        <h2>3. S&amp;AI Open-Source Contributions</h2>
+        <span class="marks">Weight: 3.0 Marks</span>
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <p><strong>Assigned Coursework Repository:</strong> <a href="https://github.com/S-AI-Projects/jq" target="_blank">S-AI-Projects/jq</a> &nbsp;|&nbsp; 
+           <strong>Student Working Fork:</strong> <a href="https://github.com/chetanyagulia05-ops/jq" target="_blank">chetanyagulia05-ops/jq</a> &nbsp;|&nbsp; 
+           <strong>Author Filter:</strong> <a href="https://github.com/S-AI-Projects/jq/pulls?q=is%3Apr+author%3Achetanyagulia05-ops" target="_blank">10 Verified Pull Requests</a></p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Task ID &amp; Issue</th>
+              <th>Pull Request</th>
+              <th>Modified Files &amp; Changes</th>
+              <th>Technical Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>R07-T031</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/4" target="_blank">Issue #4</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/62" target="_blank">PR #62</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>exercises/practice/flatten-array/.meta/tests.toml</code><br><code>docs/maintenance/flatten-array.md</code><br><code>work/R07-T031/check.py</code></td>
+              <td>Canonical problem specification defines nested list structures that differ from jq array primitives; added explicit TOML exclusion annotations for UUIDs <code>c6cf26de-8ccd-4410-84bd-b9efd88fd2bc</code>, <code>382c5242-587e-4577-b8ce-a5fb51e385a1</code>, and <code>ef1d4790-1b1e-4939-a179-51ace0829dbd</code>, validating 11 included cases with 100% pass rate in an isolated sandbox.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T032</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/34" target="_blank">Issue #34</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/63" target="_blank">PR #63</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>exercises/practice/atbash-cipher/.docs/instructions.append.md</code><br><code>work/R07-T032/check.py</code></td>
+              <td>Learners frequently encountered edge-case failures due to ambiguous lowercase transformation requirements; placed a prominent caution note specifying case folding before encoding to eliminate regression rates.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T033</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/35" target="_blank">Issue #35</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/69" target="_blank">PR #69</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/reverse-string.md</code><br><code>work/R07-T033/check.py</code></td>
+              <td>Clarified the computational differences between <code>explode | reverse | implode</code> (UTF-8 codepoints) vs array-based reversing, providing debugging guidance and negative-testing assertions against simulated off-by-one errors.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T034</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/36" target="_blank">Issue #36</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/64" target="_blank">PR #64</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>exercises/practice/two-bucket/.docs/instructions.append.md</code><br><code>work/R07-T034/check.py</code></td>
+              <td>Formulated the mathematical solvability condition using Bézout's identity (gcd of bucket capacities must divide the target volume) so students clearly distinguish algorithmic termination conditions from unsolvable state loops.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T035</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/37" target="_blank">Issue #37</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/65" target="_blank">PR #65</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/robot-simulator.md</code><br><code>work/R07-T035/check.py</code></td>
+              <td>Formally documented the Cartesian coordinate grid system with north-facing positive-y convention and modulo-4 rotational state transitions, resolving learner confusion over turn directions.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T036</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/38" target="_blank">Issue #38</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/66" target="_blank">PR #66</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/gigasecond.md</code><br><code>work/R07-T036/check.py</code></td>
+              <td>Evaluated the architectural trade-offs between <code>fromdateiso8601 / todateiso8601</code> timestamp manipulation vs manual calendar arithmetic, verifying leap-year and UTC boundary handling.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T037</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/39" target="_blank">Issue #39</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/70" target="_blank">PR #70</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/zebra-puzzle.md</code><br><code>work/R07-T037/check.py</code></td>
+              <td>Addressed jq generator stream semantics and Cartesian product evaluation, clarifying <code>rightOf</code> indexing constraints to prevent factorial combinatorial state explosions (5!^5).</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T038</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/40" target="_blank">Issue #40</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/67" target="_blank">PR #67</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/luhn.md</code><br><code>work/R07-T038/check.py</code></td>
+              <td>Mapped all maintainer assets across canonical tests, Exercism configuration files, and starter stubs, verifying checksum algorithms and non-digit character sanitization.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T039</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/41" target="_blank">Issue #41</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/71" target="_blank">PR #71</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>work/R07-T039/check.py</code></td>
+              <td>Exercism's native <code>validate_one_exercise</code> script historically copied <code>.meta/example.jq</code> onto <code>binary-search.jq</code>, which could inadvertently overwrite student starter files; built an isolated temporary workspace runner guaranteeing zero working-tree pollution.</td>
+            </tr>
+            <tr>
+              <td><strong>R07-T040</strong><br><a href="https://github.com/S-AI-Projects/jq/issues/42" target="_blank">Issue #42</a></td>
+              <td><a href="https://github.com/S-AI-Projects/jq/pull/68" target="_blank">PR #68</a><br><span class="pr-badge">🟣 6 tasks done</span></td>
+              <td><code>docs/maintenance/hello-world.md</code><br><code>work/R07-T040/check.py</code></td>
+              <td>Provided a contract walkthrough for track onboarding, documenting jq string output encoding and null-input behavior across the Exercism test runner.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2>4. Software Engineering Projects</h2>
+        <span class="marks">Weight: 2.5 Marks</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- Project 1 -->
+        <div class="card project-card">
+          <div>
+            <h3>QuantPilot — Quantitative Research &amp; Trading Simulator</h3>
+            <div class="project-field">
+              <strong>Problem Statement</strong>
+              <p>Financial engineering students and quantitative researchers lack collaborative, low-latency backtesting and paper-trading environments with deterministic financial arithmetic, rigorous multi-user isolation, and probabilistic risk analysis.</p>
+            </div>
+            <div class="project-field">
+              <strong>Solution Architecture</strong>
+              <p>Engineered a reactive single-page application using React 19 and Vite with TypeScript, integrating Supabase (PostgreSQL with Row Level Security) for multi-tenant isolation across 5 concurrent user workspaces. Built a deterministic financial accounting engine guaranteeing zero rounding discrepancy, integrated Recharts for candlestick and volume charts, and connected Google Gemini API for trade journal risk synthesis.</p>
+            </div>
+            <div class="project-field">
+              <strong>Individual Contribution</strong>
+              <p>Sole architect and developer. Designed the full-stack architecture, developed the deterministic financial math ledger, implemented Supabase database schemas and RLS security policies, built real-time chart rendering, and authored documentation.</p>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-pill">React 19</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">Vite</span>
+              <span class="tech-pill">Tailwind CSS v4</span>
+              <span class="tech-pill">Supabase (PostgreSQL)</span>
+              <span class="tech-pill">Recharts</span>
+              <span class="tech-pill">Google Gemini API</span>
+            </div>
+          </div>
+          <div>
+            <a class="badge" href="https://github.com/chetanyagulia05-ops/quantpilot" target="_blank" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+              ➔ View Repository &amp; Documentation
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card">
+          <div>
+            <h3>Interactive LLM Tokenization Engine &amp; Playground</h3>
+            <div class="project-field">
+              <strong>Problem Statement</strong>
+              <p>Machine learning students and developers struggle to intuitively grasp how Large Language Models decompose Unicode text into subword token IDs, byte-pair merges (BPE), and high-dimensional vector embeddings across differing tokenizer architectures.</p>
+            </div>
+            <div class="project-field">
+              <strong>Solution Architecture</strong>
+              <p>Constructed an in-browser client-side tokenization workbench running WebAssembly and Transformers.js. Executes real-time tokenizer parsing directly on the client with zero network latency, color-codes subword token boundaries, computes vocabulary entropy metrics, and simulates cosine similarity across token embeddings in a dynamic vector space.</p>
+            </div>
+            <div class="project-field">
+              <strong>Individual Contribution</strong>
+              <p>Engineered the client-side token parsing pipeline, built the multi-tab visual exploration interface (Tokens, Embeddings, Similarity, and Analogy vector space), optimized rendering loops for real-time keystroke processing, and deployed the interactive playground.</p>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-pill">JavaScript (ES2024)</span>
+              <span class="tech-pill">HTML5 Canvas</span>
+              <span class="tech-pill">Transformers.js</span>
+              <span class="tech-pill">WebAssembly (WASM)</span>
+              <span class="tech-pill">Hugging Face API</span>
+            </div>
+          </div>
+          <div>
+            <a class="badge" href="https://github.com/chetanyagulia05-ops/tokenizer-playground" target="_blank" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+              ➔ View Repository &amp; Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: EDUCATION & ACHIEVEMENTS -->
+    <section id="education">
+      <div class="section-header">
+        <h2>5. Education &amp; Verified Achievements</h2>
+        <span class="marks">Weight: 1.0 Mark</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- Academic Background -->
+        <div class="card">
+          <h3 style="font-family: var(--font-heading); margin-bottom: 1.25rem;">Academic Background</h3>
+          <div class="timeline-item">
+            <div class="timeline-date">2024 — 2028 (Expected Graduation: June 2028)</div>
+            <h4>Bachelor of Technology (B.Tech) in Computer Science &amp; Artificial Intelligence</h4>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Newton School of Technology (in partnership with Ajeenkya DY Patil University, Pune)</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+              <strong>Key Coursework:</strong> Data Structures &amp; Algorithms, Systems Programming, Open-Source Software Engineering (S&amp;AI), Linear Algebra &amp; Probability, Object-Oriented System Architecture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Verified Accomplishments -->
+        <div class="card">
+          <h3 style="font-family: var(--font-heading); margin-bottom: 1.25rem;">Verified Accomplishments</h3>
+          <ul class="skill-list">
+            <li class="timeline-item" style="padding-left: 1.5rem; margin-bottom: 1.25rem;">
+              <div class="timeline-date">November 2026</div>
+              <strong>S&amp;AI Open-Source Excellence (S-AI-Projects/jq)</strong><br>
+              Authored 10 verified production-grade pull requests with automated test harnesses and maintainer docs.<br>
+              <a class="skill-link" href="https://github.com/S-AI-Projects/jq/pulls?q=is%3Apr+author%3Achetanyagulia05-ops" target="_blank">↳ Verification: Official GitHub PR Records</a>
+            </li>
+            <li class="timeline-item" style="padding-left: 1.5rem; margin-bottom: 1.25rem;">
+              <div class="timeline-date">August 2024</div>
+              <strong>HackerRank Certified — Problem Solving &amp; Python</strong><br>
+              Verified technical assessment in algorithms, time complexity analysis, and Python internals.<br>
+              <a class="skill-link" href="https://www.hackerrank.com/certificates/6ba572d4ecf8" target="_blank">↳ Verification: Certificate ID #6ba572d4ecf8</a>
+            </li>
+            <li class="timeline-item" style="padding-left: 1.5rem; margin-bottom: 1.25rem;">
+              <div class="timeline-date">Active 2024 — 2026</div>
+              <strong>LeetCode Algorithmic Problem Solving Profile</strong><br>
+              Regular practice across graph algorithms, dynamic programming, and data structures.<br>
+              <a class="skill-link" href="https://leetcode.com/u/chetanyagulia05/" target="_blank">↳ Verification: LeetCode Profile (@chetanyagulia05)</a>
+            </li>
+            <li class="timeline-item" style="padding-left: 1.5rem; margin-bottom: 0;">
+              <div class="timeline-date">October 2024</div>
+              <strong>Newton School Collegiate AI Hackathon — Finalist</strong><br>
+              Designed and presented QuantPilot, a collaborative paper-trading and quantitative research workbench.<br>
+              <a class="skill-link" href="https://github.com/chetanyagulia05-ops/quantpilot" target="_blank">↳ Verification: QuantPilot System Release</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2>6. Contact Mechanisms</h2>
+        <span class="marks">Weight: 1.0 Mark</span>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:chetanyagulia05@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase;">Professional Email</div>
+            <strong style="color: var(--text-main);">chetanyagulia05@gmail.com</strong>
+          </div>
+        </a>
+
+        <a class="contact-card" href="https://github.com/chetanyagulia05-ops" target="_blank">
+          <div class="contact-icon">⌘</div>
+          <div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase;">GitHub Account</div>
+            <strong style="color: var(--text-main);">chetanyagulia05-ops</strong>
+          </div>
+        </a>
+
+        <a class="contact-card" href="https://www.linkedin.com/in/chetanya-gulia" target="_blank">
+          <div class="contact-icon">in</div>
+          <div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase;">LinkedIn Profile</div>
+            <strong style="color: var(--text-main);">in/chetanya-gulia</strong>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Chetanya Gulia · Newton School of Technology (ADYPU, Pune) · S&amp;AI Open-Source Submission</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; font-family: var(--font-mono);">Portfolio Host: <a href="https://chetanyagulia05-ops.github.io">https://chetanyagulia05-ops.github.io</a></p>
+  </footer>
+
+</body>
+</html>
